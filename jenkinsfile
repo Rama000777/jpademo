@@ -13,9 +13,7 @@ node {
 	stage('Build') {
 		try {
 			echo 'Building....'
-			bat 'gradle --version'
 			bat 'gradle clean build'
-			echo 'Building new feature'
 			releasenotes()
 		} catch(ex) {
 			echo 'Something went wrong'

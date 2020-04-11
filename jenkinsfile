@@ -7,6 +7,7 @@ node {
         echo 'Building....'
 	bat 'gradle --version'
 	echo 'Building new feature'
+	releasenotes()
     }
     stage('Test') {
         echo 'Testing....'

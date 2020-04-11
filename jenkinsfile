@@ -1,0 +1,17 @@
+node {
+    stage('SCM') {
+    	echo 'Gathering code from version control'
+	git branch: '${branch}', url: 'https://github.com/Rama000777/jpademo.git'
+    }
+    stage('Build') {
+        echo 'Building....'
+	bat 'gradle --version'
+	echo 'Building new feature'
+    }
+    stage('Test') {
+        echo 'Testing....'
+    }
+    stage('Deploy') {
+        echo 'Deploying....'
+    }
+}

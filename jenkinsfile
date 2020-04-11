@@ -1,11 +1,5 @@
 node {
 	
-	@Library("releasenotes") _
-    standardPipeline {
-        projectName = "jpademo"
-        serverDomain = "localhost"
-    }
-	
 	stage('SCM') {
 		echo 'Gathering code from version control'
 		git branch: '${branch}', url: 'https://github.com/Rama000777/jpademo.git'

@@ -1,7 +1,9 @@
 import groovy.io.FileType;
 import java.io.File;
 import java.text.SimpleDateFormat
+import com.cloudbees.groovy.cps.NonCPS
 
+@NonCPS
 def call(Map config=[:]){
 	def dir = new File(pwd());
     

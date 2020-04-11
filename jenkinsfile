@@ -1,6 +1,6 @@
 node {
 	
-	@Library("JPADemo") _
+	@Library("Rama000777/jpademo") _
     standardPipeline {
         projectName = "JPADemo"
         serverDomain = "localhost"

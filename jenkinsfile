@@ -1,18 +1,27 @@
 node {
-    stage('SCM') {
-    	echo 'Gathering code from version control'
-	git branch: '${branch}', url: 'https://github.com/Rama000777/jpademo.git'
-    }
-    stage('Build') {
-        echo 'Building....'
-	bat 'gradle --version'
-	echo 'Building new feature'
-	releasenotes()
-    }
-    stage('Test') {
-        echo 'Testing....'
-    }
-    stage('Deploy') {
-        echo 'Deploying....'
-    }
+	stage('SCM') {
+		echo 'Gathering code from version control'
+		git branch: '${branch}', url: 'https://github.com/Rama000777/jpademo.git'
+	}
+	stage('Build') {
+		try {
+			echo 'Building....'
+			bat 'gradle --version'
+			bat 'gradle clean build'
+			echo 'Building new feature'
+			releasenotes()
+		} catch(ex) {
+			echo 'Something went wrong'
+			echo ex.toString()
+			currentBuild.result = 'FAILURE'
+		} finally {
+			// clean up
+		}
+	}
+	stage('Test') {
+		echo 'Testing....'
+	}
+	stage('Deploy') {
+		echo 'Deploying....'
+	}
 }

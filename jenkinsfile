@@ -1,4 +1,1 @@
-node {
-	
-	genericpipeline()
-}
+genericpipeline()
